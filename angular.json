@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "family-app"
+    }
+  },
+  "defaultProject": "family-app",
+  "cli": {
+    "analytics": false
+  }
 }
