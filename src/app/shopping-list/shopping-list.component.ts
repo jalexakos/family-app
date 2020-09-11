@@ -21,6 +21,17 @@ export class ShoppingListComponent implements OnInit {
     '3 tubs'
   ]
 
+  active: number;
+onClick(index: number) {
+  this.active = index;
+  for(let i = 0; i < this.furtherTestData.length;i++){
+    if(index === i){
+      console.log(this.furtherTestData[i])
+      document.querySelector('#shoppingInfo').innerHTML = this.furtherTestData[i]
+    }
+  }
+}
+
   constructor() { }
 
   ngOnInit(): void {
