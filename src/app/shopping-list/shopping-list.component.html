@@ -1,40 +1,62 @@
 <h2>Shopping List</h2>
 
-  <!-- List group -->
-<div class="row">
-<!-- <div class="col-4">
-<div class="list-group" id="myList" role="tablist" *ngFor="let item of testShoppingItems; let i = index">
-    <a class="list-group-item list-group-item-action" data-toggle="list" role="tab" href="list-{{item}}">{{ item }}</a>
-    <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
-    <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
-    <a class="list-group-item list-group-item-action" data-toggle="list" href="#settings" role="tab">Settings</a>
+<!-- Adding a new item button -->
+<br>
+<button id="formReveal" (click)="toggleForm()" class="btn btn-info">Add New Item</button>
+<br>
+<br>
+<!-- Adding a new item form -->
+<form [formGroup] = "newItemForm" *ngIf="showForm">
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" formControlName = "itemName" placeholder="Item Name">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" formControlName = "itemDescription" placeholder="Item Description">
+    </div>
   </div>
-</div> -->
-  
-  <!-- Tab panes -->
-  <!-- <div class="col-8">
-  <div class="tab-content" *ngFor="let desc of furtherTestData; let item of testShoppingItems">
-    <div class="tab-pane" role="tabpanel" id="list-{{item}}">{{ desc }}</div>
-     <div class="tab-pane" id="profile" role="tabpanel">...</div>
-    <div class="tab-pane" id="messages" role="tabpanel">...</div>
-    <div class="tab-pane" id="settings" role="tabpanel">...</div> 
-  </div>
-</div> -->
+  <br>
+  <button type="button" class="btn btn-success" (click)="onSubmitNewItem()">Add Item</button>
+</form>
 
-<div class="col-4">
-  <ul class="list-group" *ngFor="let item of testShoppingItems; let i = index;">
-    <li class="list-group-item" [class.active]="active === i" (click)="onClick(i)"  [value]="item">
-      {{item}}
+<br>
+<!-- Current List -->
+<div class="row">
+
+<!-- List Items -->
+
+<div class="col">
+  <ul class="list-group list-group-flush" *ngFor="let item of shoppingData">
+    <li class="list-group-item shopping-item" [class.active]="active === item.id" (click)="onClick(item.id)"  [value]="item">
+      {{item.itemName}}
     </li>
-    <li *ngFor = "let test of item.furtherTestData">{{ test }}</li>
   </ul>
 </div>
-<div class="col-8">
+
+<!-- Item Information (if item is clicked) -->
+
+<div class="col">
   <div class="tab-content">
     <div class="tab-panel">
       <p id="shoppingInfo"></p>
+    <div id="showButtons" *ngIf="showButtons">
+      <button type="button" class="btn btn-success" (click)="showUpdateForm()" id="updateButton">Update</button>
+      <button type="button" class="btn btn-danger" (click)="deleteItem(active)">Delete</button>
+      <br>
+      <br>
+    </div>
+      <form [formGroup] = "updateItemForm" *ngIf="showUpdateForm2">
+            <input type="text" class="form-control" formControlName = "itemName" placeholder="Item Name">
+            <input type="text" class="form-control" formControlName = "itemDescription" placeholder="Item Description" id="updatedItem">
+        <br>
+        <button type="button" class="btn btn-success" (click)="onSubmitUpdateItem(active)">Update Item</button>
+      </form>
     </div>
   </div>
 </div>
 
 </div>
+<br>
+<br>
+
+<button type="button" class="btn btn-warning" (click)="closeForms()">Close All Shopping Info</button>

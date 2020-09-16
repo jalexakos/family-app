@@ -1,0 +1,42 @@
+<div class="container">
+<div class='row'>
+<div class='col'>
+<h2>Get The News!</h2>
+<br>
+<h4>Get the top three articles on any subject by searching below</h4>
+
+<form class="form-group" [formGroup] = "newsData">
+    <label for="newsItem" class>Search the topic</label>
+    <input class="form-control mr-sm-2 spaced-search" type="search" placeholder="News Item" formControlName = "newsItem" aria-label="Search" id="newsItem">
+    <label for="date">By a specific date (optional)</label>
+    <input class="form-control mr-sm-2 spaced-search" type="search" placeholder="YYYY-MM-DD" formControlName = "date" aria-label="Search" id="date">
+    <button class="btn btn-outline-success my-2 my-sm-0 spaced-search" type="submit" (click)="usingAPI()">Search</button>
+  </form>
+
+<br>
+
+<h3 id="errorMsg"></h3>
+
+<h4 id="article-1-header"></h4>
+<a href="" id="article-1-url"><h5 id="article-1-title" class="articles"></h5></a>
+<p id="article-1-author" class="articles"></p>
+
+<br>
+
+<h4 id="article-2-header"></h4>
+<a id="article-2-url" href=""><h5 id="article-2-title" class="articles"></h5></a>
+<p id="article-2-author" class="articles"></p>
+
+<br>
+
+<h4 id="article-3-header"></h4>
+<a id="article-3-url" href=""><h5 id="article-3-title" class="articles"></h5></a>
+<p id="article-3-author" class="articles"></p>
+
+<br>
+
+</div>
+
+</div>
+
+</div>

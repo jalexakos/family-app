@@ -1,9 +1,45 @@
 <div class="container">
 <h2>What's Bea Been Up To Today?</h2>
 
-<div class="col-4" *ngFor="let data of testData">
-    <ul class="list-group">
-        <li class="list-group-item list-group-item-info"><a>{{ data }}</a></li>
+<!-- Adding New Bea Event Form -->
+<br>
+<button id="formReveal" (click)="toggleForm()" class="btn btn-info">Add Latest Event</button>
+<br>
+<br>
+<form [formGroup] = "newBeaForm" *ngIf="showForm">
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control" formControlName = "beaEvent" placeholder="Item Name" id="newBeaEventForm">
+    </div>
+  </div>
+  <br>
+  <button type="button" class="btn btn-success" (click)="onSubmitNewEvent()">Add Item</button>
+</form>
+
+<br>
+
+<div *ngFor="let data of beaData">
+    <ul class="list-group list-group-flush">
+        <!-- This creates the items -->
+        <li class="list-group-item list-group-item-info bea-item" (click) = "showButtons(data.id)">{{ data.beaEvent }}</li>
+        <br>
+        <!-- This shows the buttons -->
+        <div class="showButtons" *ngIf="data.id === buttonIndex && confirmShowForms">
+            <button type="button" class="btn btn-success" (click)="showUpdateForm(data.id)" id="updateButton">Update</button>
+            <button type="button" class="btn btn-danger" (click)="deleteEvent(data.id)">Delete</button>
+            <p class="time-info">Time Added: {{ data.beaTime }}</p>
+          </div>
+          <!-- This shows the update form -->
+            <form [formGroup] = "updateBea" class="updateForm" *ngIf="showUpdateForm2 && data.id === buttonIndex && confirmShowForms">
+                  <input type="text" class="form-control" formControlName = "updateBeaEvent" placeholder="Update Event">
+              <br>
+              <button type="button" class="btn btn-success" (click)="onSubmitUpdateEvent(data.id,data.beaEvent)">Update Event</button>
+              <br>
+            </form>
     </ul>
 </div>
+
+<br>
+<br>
+<button type="button" class="btn btn-warning" (click)="closeForms()">Close Event Info</button>
 

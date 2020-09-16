@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "alexakos-family-app": {
+      "hosting": {
+        "family-app": [
+          "alexakos-family-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "alexakos-family-app"
+  }
+}
