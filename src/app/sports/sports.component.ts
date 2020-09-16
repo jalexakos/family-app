@@ -23,7 +23,7 @@ export class SportsComponent implements OnInit {
     let newsItem = this.newsData.value.newsItem;
     let date = this.newsData.value.date;
 
-    fetch(`https://newsapi.org/v2/everything?q=${newsItem}&from=${date}&sortBy=publishedAt&apiKey=5aae81720b2b420680af2170114c0bad`
+    fetch(`https://newsapi.org/v2/everything?q=${newsItem}&from=${date}&sortBy=publishedAt&apiKey=[HIDDEN]`
   ).then(response => response.json())
       .then(rawData => 
         {
