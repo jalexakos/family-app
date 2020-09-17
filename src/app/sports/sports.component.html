@@ -8,8 +8,8 @@
 <form class="form-group" [formGroup] = "newsData">
     <label for="newsItem" class>Search the topic</label>
     <input class="form-control mr-sm-2 spaced-search" type="search" placeholder="News Item" formControlName = "newsItem" aria-label="Search" id="newsItem">
-    <label for="date">By a specific date (optional)</label>
-    <input class="form-control mr-sm-2 spaced-search" type="search" placeholder="YYYY-MM-DD" formControlName = "date" aria-label="Search" id="date">
+    <!-- <label for="date">By a specific date (optional)</label>
+    <input class="form-control mr-sm-2 spaced-search" type="search" placeholder="YYYY-MM-DD" formControlName = "date" aria-label="Search" id="date"> -->
     <button class="btn btn-outline-success my-2 my-sm-0 spaced-search" type="submit" (click)="usingAPI()">Search</button>
   </form>
 
