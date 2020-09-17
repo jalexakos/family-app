@@ -10,7 +10,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SportsComponent implements OnInit {
 
-  testing = "https://www.google.com";
 
   // Creating form for data passed in
   newsData = new FormGroup({
@@ -18,16 +17,25 @@ export class SportsComponent implements OnInit {
     date: new FormControl('', [Validators.required])
   })
 
-
   usingAPI(){
     let newsItem = this.newsData.value.newsItem;
     let date = this.newsData.value.date;
 
-    fetch(`https://newsapi.org/v2/everything?q=${newsItem}&from=${date}&sortBy=publishedAt&apiKey=5aae81720b2b420680af2170114c0bad`
+    fetch(`https://newsapi.org/v2/everything?q=${newsItem}&from=${date}&sortBy=publishedAt&apiKey=5aae81720b2b420680af2170114c0bad`, 
+    {
+      headers: {
+        // 'Content-Type': 'application/json',
+        "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers",
+        "Access-Control-Request-Headers": "https://alexakos-family-app.web.app",
+        'Access-Control-Allow-Origin': "https://alexakos-family-app.web.app"
+      },
+      method: 'GET', // GET, POST, PUT, DELETE
+      // mode: 'no-cors' // the most important option
+    }
   ).then(response => response.json())
       .then(rawData => 
         {
-      
+      console.log(rawData);
       // Creating article objects
       let article1 = {
         title: rawData.articles[0].title,
@@ -96,3 +104,11 @@ export class SportsComponent implements OnInit {
   }
 
 }
+
+
+    //   { headers: new Headers({
+    //     'Access-Control-Allow-Origin': "https://alexakos-family-app.web.app"
+    //   }),
+    //   credentials: "include",
+    //   mode:"no-cors",
+    // }
