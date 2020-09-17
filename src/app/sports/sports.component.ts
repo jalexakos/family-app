@@ -12,7 +12,6 @@ import {NewsService} from '../services/news.service'
 })
 export class SportsComponent implements OnInit {
 
-  testing = "https://www.google.com";
 
   // Creating form for data passed in
   newsData = new FormGroup({
@@ -20,30 +19,29 @@ export class SportsComponent implements OnInit {
     date: new FormControl('', [Validators.required])
   })
 
-
   usingAPI(){
     let newsItem = this.newsData.value.newsItem;
     let date = this.newsData.value.date;
 
+
     this.news.getNews(newsItem,date).subscribe(rawData => {
-      console.log(rawData)
       // Creating article objects
       let article1 = {
         title: rawData['articles'][0].title,
         url: rawData['articles'][0].url,
-        author: rawData['articles'][0].author
+        author: rawData['articles'][0].source.name
       };
 
       let article2 = {
         title: rawData['articles'][1].title,
         url: rawData['articles'][1].url,
-        author: rawData['articles'][1].author
+        author: rawData['articles'][1].source.name
       };
 
       let article3 = {
         title: rawData['articles'][2].title,
         url: rawData['articles'][2].url,
-        author: rawData['articles'][2].author
+        author: rawData['articles'][2].source.name
       };
 
       // Adding article info to HTML
@@ -141,3 +139,11 @@ export class SportsComponent implements OnInit {
   }
 
 }
+
+
+    //   { headers: new Headers({
+    //     'Access-Control-Allow-Origin': "https://alexakos-family-app.web.app"
+    //   }),
+    //   credentials: "include",
+    //   mode:"no-cors",
+    // }
