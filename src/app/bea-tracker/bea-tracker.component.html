@@ -4,6 +4,7 @@
 <!-- Adding New Bea Event Form -->
 <br>
 <button id="formReveal" (click)="toggleForm()" class="btn btn-info">Add Latest Event</button>
+<button type="button" class="btn btn-success add-item-bea text-right" (click)="onSubmitNewEvent()" *ngIf="showForm">Add Item</button>
 <br>
 <br>
 <form [formGroup] = "newBeaForm" *ngIf="showForm">
@@ -13,7 +14,7 @@
     </div>
   </div>
   <br>
-  <button type="button" class="btn btn-success" (click)="onSubmitNewEvent()">Add Item</button>
+  <!-- <button type="button" class="btn btn-success" (click)="onSubmitNewEvent()">Add Item</button> -->
 </form>
 
 <br>
