@@ -3,6 +3,7 @@
 <!-- Adding a new item button -->
 <br>
 <button id="formReveal" (click)="toggleForm()" class="btn btn-info">Add New Item</button>
+<button type="button" class="btn btn-success add-item-shopping" (click)="onSubmitNewItem()" *ngIf="showForm">Add Item</button>
 <br>
 <br>
 <!-- Adding a new item form -->
@@ -16,7 +17,7 @@
     </div>
   </div>
   <br>
-  <button type="button" class="btn btn-success" (click)="onSubmitNewItem()">Add Item</button>
+
 </form>
 
 <br>
